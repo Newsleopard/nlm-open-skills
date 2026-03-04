@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "prompt": "用 Python 寫一個函式，透過 NewsLeopard EDM API 建立並送出一封行銷活動信件。目標群組 SN 是 grp-001，主旨「六月新品上市」，寄件人名稱「品牌電子報」，寄件地址 news@example.com，HTML 內容帶個人化變數 NAME。要支援立即寄送和排程寄送兩種模式。",
+    "expectations": [
+      "Base URL is https://api.newsleopard.com",
+      "Authentication uses x-api-key header (not Bearer token)",
+      "POST request to /v1/campaign/normal/submit endpoint",
+      "Request body includes required fields: name, lists (array with grp-001), subject, fromName, fromAddress, htmlContent, footerLang, scheduleType",
+      "scheduleType is 0 for immediate send and 1 for scheduled send with timezone and utcTimestamp",
+      "Variable syntax uses ${NAME} format (not {{NAME}} — that is SureNotify syntax)",
+      "Subject length constraint mentioned or validated (max 150 chars)"
+    ]
+  },
+  {
+    "id": 2,
+    "prompt": "Write a Node.js function using axios to send a transactional order confirmation email via the SureNotify API. The email should go to multiple recipients, each with personalized order_id and customer_name variables. Include proper error handling for the success/failure response.",
+    "expectations": [
+      "Base URL is https://mail.surenotifyapi.com",
+      "Authentication uses x-api-key header",
+      "POST request to /v1/messages endpoint",
+      "recipients is an array of objects, each with address (string) and variables (object)",
+      "Variable syntax in subject/content uses {{variable_name}} format (double curly braces)",
+      "Handles response that contains both success[] array (with id and address) and failure{} object",
+      "Max 100 recipients per request constraint mentioned or enforced"
+    ]
+  },
+  {
+    "id": 3,
+    "prompt": "Implement a SureNotify webhook signature verification middleware for Express.js. The middleware should extract the signature from the request header, compute the expected HMAC-SHA256 digest, and reject requests with invalid signatures. Show how to apply it to a webhook route.",
+    "expectations": [
+      "Extracts signature from x-surenotify-signature request header",
+      "HMAC-SHA256 algorithm is used for signature computation",
+      "API key (x-api-key) is used as the HMAC secret",
+      "Payload for HMAC is the concatenation of message id + eventType from the webhook body (not the raw body)",
+      "Uses timing-safe comparison (e.g., crypto.timingSafeEqual or equivalent) to prevent timing attacks",
+      "Returns 401 or 403 for invalid signatures, proceeds with next() for valid ones"
+    ]
+  },
+  {
+    "id": 4,
+    "prompt": "用 Python 寫一個函式，透過 SureNotify API 發送 SMS 簡訊通知。收件人是台灣手機號碼 +886912345678，內容包含公司名稱「測試公司」和一個驗證碼變數 code。要處理回傳結果。",
+    "expectations": [
+      "Base URL is https://mail.surenotifyapi.com",
+      "Authentication uses x-api-key header",
+      "POST request to /v1/sms/messages endpoint",
+      "SMS content includes company name (NCC regulation requirement)",
+      "Variable syntax uses {{code}} format (double curly braces) for SureNotify",
+      "Handles response with success/failure arrays"
+    ]
+  },
+  {
+    "id": 5,
+    "prompt": "Write a Python script that fetches campaign performance reports from the NewsLeopard EDM API for all campaigns sent in the last 30 days. For each campaign, print the open rate, click rate, and bounce rate. Use the reporting endpoints.",
+    "expectations": [
+      "Base URL is https://api.newsleopard.com",
+      "Authentication uses x-api-key header",
+      "GET request to /v1/report/campaigns with startDate and endDate query parameters to get campaign codes",
+      "POST request to /v1/report/performance to get metrics for each campaign",
+      "Extracts and displays open rate, click rate, and bounce rate from the response"
+    ]
+  }
+]

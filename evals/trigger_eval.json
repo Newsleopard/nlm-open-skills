@@ -1,0 +1,95 @@
+[
+  {
+    "query": "幫我用 NewsLeopard EDM API 建立一個行銷活動，寄給 VIP 客戶群組，主旨是週年慶特惠",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to send a transactional order confirmation email using the SureNotify API in my Node.js backend",
+    "should_trigger": true
+  },
+  {
+    "query": "用 SureNotify API 發送簡訊驗證碼給用戶，號碼是台灣手機，要帶公司名稱",
+    "should_trigger": true
+  },
+  {
+    "query": "Help me set up a webhook endpoint to receive SureNotify email delivery events (open, click, bounce) in my Express server",
+    "should_trigger": true
+  },
+  {
+    "query": "我要用 NewsLeopard API 匯入一份 CSV 聯絡人名單到指定群組，幫我寫 Python script",
+    "should_trigger": true
+  },
+  {
+    "query": "How do I query campaign open rates and click rates using the NewsLeopard reporting API? I need to pull performance data for campaigns sent last month",
+    "should_trigger": true
+  },
+  {
+    "query": "幫我用 NewsLeopard A/B testing API 建立一個主旨測試活動，測試比例 30%，測試時間 24 小時",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to verify the x-surenotify-signature header on incoming webhooks using HMAC-SHA256 in my Python Flask app",
+    "should_trigger": true
+  },
+  {
+    "query": "呼叫 NewsLeopard API 送活動時回傳錯誤碼 40012，怎麼排查？我的程式碼用 axios 打 /v1/campaign/normal/submit",
+    "should_trigger": true
+  },
+  {
+    "query": "Help me set up sender domain SPF/DKIM authentication using the SureNotify domains API for our company domain",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to integrate SendGrid to send marketing emails from our Rails application",
+    "should_trigger": false
+  },
+  {
+    "query": "幫我用 Mailchimp API 建立一個 email campaign 並排程寄送",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I send SMS messages using the Twilio API in Python?",
+    "should_trigger": false
+  },
+  {
+    "query": "我要設定 AWS SES 寄信，需要驗證網域和設定 DKIM",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you give me some email marketing best practices? How often should I send newsletters and what subject lines work best?",
+    "should_trigger": false
+  },
+  {
+    "query": "幫我串接 Stripe 付款功能，支援信用卡跟超商繳費",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to implement push notifications using Firebase Cloud Messaging in my React Native app",
+    "should_trigger": false
+  },
+  {
+    "query": "幫我建一個 Node.js Express 專案，要有 TypeScript、ESLint、Jest 設定",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I set up Google Analytics 4 event tracking and pull reports via the GA4 API?",
+    "should_trigger": false
+  },
+  {
+    "query": "用電子豹 MCP Server 幫我寄一封電子報給 VIP 群組",
+    "should_trigger": false,
+    "_comment": "MCP Server usage (not API integration) — should not trigger the API skill"
+  },
+  {
+    "query": "Help me send emails from my backend service",
+    "should_trigger": false
+  },
+  {
+    "query": "我想了解 NewsLeopard EDM API 的 /v1/campaign/normal/submit 各欄位怎麼填",
+    "should_trigger": true
+  },
+  {
+    "query": "How do I send bulk marketing emails programmatically?",
+    "should_trigger": false
+  }
+]
