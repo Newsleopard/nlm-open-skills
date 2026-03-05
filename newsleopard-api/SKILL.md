@@ -1,6 +1,21 @@
 ---
 name: newsleopard-api
-description: "Integrate, debug, and QA the NewsLeopard email marketing platform APIs. Covers two API sets: (1) EDM API (api.newsleopard.com) for bulk email campaigns — contacts/lists management, campaign creation/scheduling/A-B testing, reporting/exports, templates, automation, and account balance; (2) SureNotify API (mail.surenotifyapi.com) for transactional notifications — single/batch email sending, SMS sending, webhooks, event tracking, and sender domain authentication. Use when: building integrations with NewsLeopard or SureNotify, sending marketing or transactional emails/SMS via API, debugging delivery issues, verifying webhook signatures, writing QA tests for email/SMS workflows, troubleshooting API errors (40001, 40003, 40011, 40012, etc.), or reviewing code that calls NewsLeopard/SureNotify endpoints."
+description: >
+  讓 AI 助手直接操作電子豹 NewsLeopard EDM 行銷 API 與 SureNotify
+  交易通知 API。涵蓋聯絡人管理、行銷活動建立/排程/A-B 測試、
+  成效報表、範本、自動化腳本、交易信件寄送、簡訊發送、
+  Webhook 管理、網域驗證等共 31 個端點。
+tags:
+  - email
+  - sms
+  - edm
+  - taiwan
+  - newsleopard
+  - api
+  - marketing
+  - webhook
+  - newsletter
+  - transactional
 ---
 
 # NewsLeopard API Integration

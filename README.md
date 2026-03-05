@@ -43,6 +43,16 @@ Agent Skill 是一種遵循 [agentskills.io 開放標準](https://agentskills.io
 
 ## 安裝方式
 
+#### 快速安裝（推薦）
+
+使用 `npx skills add` 一鍵安裝到目前專案：
+
+```bash
+npx skills add https://github.com/Newsleopard/nlm-open-skills
+```
+
+#### 手動安裝
+
 從 GitHub clone 本專案到對應的 Skills 目錄即可。
 
 ### Claude Code
