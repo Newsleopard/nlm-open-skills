@@ -43,6 +43,13 @@ Agent Skill 是一種遵循 [agentskills.io 開放標準](https://agentskills.io
 
 ## 安裝方式
 
+### 前置需求（Prerequisites）
+
+| 安裝方式 | 需求 |
+|---------|------|
+| 快速安裝（`npx skills add`） | [Node.js](https://nodejs.org/) 18 以上（含 `npx`） |
+| 手動安裝（`git clone`） | [Git](https://git-scm.com/) |
+
 #### 快速安裝（推薦）
 
 使用 `npx skills add` 一鍵安裝到目前專案：
