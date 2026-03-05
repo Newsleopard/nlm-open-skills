@@ -1,10 +1,11 @@
 ---
 name: newsleopard-api
 description: >
-  讓 AI 助手直接操作電子豹 NewsLeopard EDM 行銷 API 與 SureNotify
-  交易通知 API。涵蓋聯絡人管理、行銷活動建立/排程/A-B 測試、
-  成效報表、範本、自動化腳本、交易信件寄送、簡訊發送、
-  Webhook 管理、網域驗證等共 31 個端點。
+  Let AI assistants interact with the NewsLeopard EDM marketing API
+  and SureNotify transactional API. Covers contact management, campaign
+  creation/scheduling/A-B testing, performance reports, templates,
+  automation scripts, transactional email, SMS delivery, webhook
+  management, and domain verification across 31 endpoints.
 tags:
   - email
   - sms
