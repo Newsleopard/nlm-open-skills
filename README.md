@@ -55,8 +55,11 @@ Agent Skill 是一種遵循 [agentskills.io 開放標準](https://agentskills.io
 使用 `npx skills add` 一鍵安裝：
 
 ```bash
-# 安裝到所有支援的 AI 助手（跳過互動提示）
+# 安裝到目前專案（預設，所有支援的 AI 助手）
 npx skills add https://github.com/Newsleopard/nlm-open-skills --all
+
+# 全域安裝（所有專案皆可使用）
+npx skills add https://github.com/Newsleopard/nlm-open-skills --all -g
 
 # 只安裝到特定 AI 助手（例如 Claude Code）
 npx skills add https://github.com/Newsleopard/nlm-open-skills -a claude-code -y
