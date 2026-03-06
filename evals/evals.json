@@ -59,5 +59,28 @@
       "POST request to /v1/report/performance to get metrics for each campaign",
       "Extracts and displays open rate, click rate, and bounce rate from the response"
     ]
+  },
+  {
+    "id": 6,
+    "prompt": "幫我用電子豹的 API 在 Python 程式中查詢最近 30 天活動的開信率，並將結果存成 CSV。",
+    "expectations": [
+      "Uses HTTP requests to call the REST API (not MCP tool references)",
+      "Base URL is https://api.newsleopard.com",
+      "Authentication uses x-api-key header",
+      "GET request to /v1/report/campaigns with startDate and endDate parameters",
+      "Writes results to CSV file",
+      "Does not reference MCP server or MCP tools"
+    ]
+  },
+  {
+    "id": 7,
+    "prompt": "Write a TypeScript function that uses the NewsLeopard SureNotify API to send a password reset email with a reset_link variable, then polls the event status until delivery is confirmed or times out after 60 seconds.",
+    "expectations": [
+      "Base URL is https://mail.surenotifyapi.com (SureNotify, not EDM)",
+      "POST to /v1/messages for sending",
+      "Variable syntax uses {{reset_link}} (double curly braces, not ${reset_link})",
+      "Authentication uses x-api-key header",
+      "Implements polling loop with timeout logic"
+    ]
   }
 ]

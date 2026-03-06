@@ -91,5 +91,45 @@
   {
     "query": "How do I send bulk marketing emails programmatically?",
     "should_trigger": false
+  },
+  {
+    "query": "幫我查看最近活動的開信率",
+    "should_trigger": false,
+    "_comment": "操作型查詢，無程式碼/API 提及 — MCP 領域"
+  },
+  {
+    "query": "幫我建一個電子報活動，主旨是春季特賣",
+    "should_trigger": false,
+    "_comment": "直接操作請求 — 對應 MCP draft_campaign"
+  },
+  {
+    "query": "電子豹帳戶還有多少額度？",
+    "should_trigger": false,
+    "_comment": "帳戶查詢 — 對應 MCP get_account_balance"
+  },
+  {
+    "query": "幫我暫停編號 SN-12345 的活動",
+    "should_trigger": false,
+    "_comment": "直接操作 — 對應 MCP pause_campaign"
+  },
+  {
+    "query": "用電子豹發一封測試信給 test@example.com",
+    "should_trigger": false,
+    "_comment": "操作型寄送請求 — 無程式碼/API 信號"
+  },
+  {
+    "query": "我想在後端系統整合電子豹寄信功能，幫我寫 API 串接程式",
+    "should_trigger": true,
+    "_comment": "明確要求 API 整合程式碼"
+  },
+  {
+    "query": "How do I programmatically create and schedule campaigns via the NewsLeopard API in my SaaS backend?",
+    "should_trigger": true,
+    "_comment": "programmatically + API + backend = 程式碼生成"
+  },
+  {
+    "query": "幫我寫一個 cron job，每天用 NewsLeopard API 拉取前一天的活動報表並寄到 Slack",
+    "should_trigger": true,
+    "_comment": "要求寫 cron job 腳本 — 明確是程式碼"
   }
 ]

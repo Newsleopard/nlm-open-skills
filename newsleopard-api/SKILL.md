@@ -1,11 +1,12 @@
 ---
 name: newsleopard-api
 description: >
-  Let AI assistants interact with the NewsLeopard EDM marketing API
-  and SureNotify transactional API. Covers contact management, campaign
+  Generate integration code for the NewsLeopard EDM marketing API
+  and SureNotify transactional API. Teaches AI assistants how to
+  write HTTP client code for contact management, campaign
   creation/scheduling/A-B testing, performance reports, templates,
-  automation scripts, transactional email, SMS delivery, webhook
-  management, and domain verification across 31 endpoints.
+  automation triggers, transactional email, SMS delivery, webhook
+  handling, and domain verification across 31 REST endpoints.
 tags:
   - email
   - sms

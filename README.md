@@ -1,6 +1,6 @@
 # NewsLeopard API — AI Agent Skill
 
-**讓 AI 助手直接操作 NewsLeopard 電子報與簡訊 API，涵蓋 EDM 行銷活動與 SureNotify 交易通知。**
+**讓 AI 程式助手生成 NewsLeopard 電子報與簡訊 API 的整合程式碼，涵蓋 EDM 行銷活動與 SureNotify 交易通知。**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Skill Format](https://img.shields.io/badge/Format-Agent%20Skill-blue.svg)](https://agentskills.io)
@@ -52,11 +52,17 @@ Agent Skill 是一種遵循 [agentskills.io 開放標準](https://agentskills.io
 
 #### 快速安裝（推薦）
 
-使用 `npx skills add` 一鍵安裝到目前專案：
+使用 `npx skills add` 一鍵安裝：
 
 ```bash
-npx skills add https://github.com/Newsleopard/nlm-open-skills
+# 安裝到所有支援的 AI 助手（跳過互動提示）
+npx skills add https://github.com/Newsleopard/nlm-open-skills --all
+
+# 只安裝到特定 AI 助手（例如 Claude Code）
+npx skills add https://github.com/Newsleopard/nlm-open-skills -a claude-code -y
 ```
+
+> **常用旗標：** `--all` 安裝到所有 agent 並跳過提示；`-a <agent>` 指定 agent（如 `claude-code`、`cursor`、`copilot`）；`-y` 跳過確認；`-g` 全域安裝。
 
 #### 手動安裝
 
