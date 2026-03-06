@@ -1,12 +1,14 @@
 ---
 name: newsleopard-api
 description: >
-  Generate integration code for the NewsLeopard EDM marketing API
-  and SureNotify transactional API. Teaches AI assistants how to
-  write HTTP client code for contact management, campaign
-  creation/scheduling/A-B testing, performance reports, templates,
-  automation triggers, transactional email, SMS delivery, webhook
-  handling, and domain verification across 32 REST endpoints.
+  Generate HTTP client code for the NewsLeopard EDM API
+  (api.newsleopard.com) and SureNotify transactional API
+  (mail.surenotifyapi.com). Use ONLY when the user explicitly
+  asks to write code, build integrations, or call REST endpoints
+  for these specific services. Covers contacts, campaigns, A/B
+  testing, reports, templates, automation, email, SMS, webhooks,
+  and domain verification. Do NOT trigger for generic email tasks,
+  MCP Server operations, or platform UI actions without code intent.
 tags:
   - email
   - sms
