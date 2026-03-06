@@ -56,7 +56,7 @@
       "Base URL is https://api.newsleopard.com",
       "Authentication uses x-api-key header",
       "GET request to /v1/report/campaigns with startDate and endDate query parameters to get campaign codes",
-      "POST request to /v1/report/performance to get metrics for each campaign",
+      "POST request to /v1/report/campaigns/metrics to get metrics for each campaign",
       "Extracts and displays open rate, click rate, and bounce rate from the response"
     ]
   },

@@ -147,19 +147,29 @@ For one-time sends without storing contacts. Returns campaign code + pre-signed 
 ### Delete Campaign
 
 ```
-DELETE /v1/campaign/{campaign_sn}
+DELETE /v1/campaign/normal
 ```
+
+**Request body:**
+
+```json
+{
+  "campaignSnList": ["campaign_sn_1", "campaign_sn_2"]
+}
+```
+
+**Response:** Returns `success`, `sendingCampaign`, `badCampaigns` arrays.
 
 ### Pause Campaign
 
 ```
-PATCH /v1/campaign/{campaign_sn}
+PATCH /v1/campaign/normal/{sn}
 ```
 
 ### Query Campaign Status
 
 ```
-GET /v1/campaign/{campaign_sn}
+GET /v1/campaign/normal/{sn}
 ```
 
 Returns current campaign state and delivery progress.
@@ -204,7 +214,7 @@ GET /v1/report/campaigns?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD
 ### Campaign Performance
 
 ```
-POST /v1/report/performance
+POST /v1/report/campaigns/metrics
 ```
 
 **Request body:** Array of campaign SNs.
@@ -214,17 +224,17 @@ POST /v1/report/performance
 ### Export Detailed Report
 
 ```
-POST /v1/report/export
+POST /v1/report/{campaign_sn}/export
 ```
 
-Generates a CSV export. Returns an `export_sn`.
+Generates a CSV export for a specific campaign. Returns an `export_sn`.
 
 **Rate limit:** 1 request per 10 seconds.
 
 ### Get Report Download URL
 
 ```
-GET /v1/report/export/{export_sn}
+GET /v1/report/{campaign_sn}/link
 ```
 
 Returns the download URL once the export is ready.
@@ -242,7 +252,7 @@ GET /v1/templates
 ### Get Specific Template
 
 ```
-GET /v1/templates/{template_sn}
+GET /v1/templates/{id}
 ```
 
 Returns template HTML content and metadata.
@@ -254,8 +264,30 @@ Returns template HTML content and metadata.
 ### Trigger or Stop Automation Script
 
 ```
-POST /v1/automation/{script_sn}
+POST /v1/automation/event
 ```
+
+**Request body:**
+
+```json
+{
+  "workflow": "automation_script_id",
+  "event": "TRIGGER",
+  "recipients": [
+    {
+      "name": "John",
+      "address": "john@example.com",
+      "variables": { "ORDER_ID": "A123" }
+    }
+  ]
+}
+```
+
+| Parameter | Description |
+|-----------|-------------|
+| `workflow` | Automation script ID (created in dashboard) |
+| `event` | `TRIGGER` to start, `TERMINATE` to stop |
+| `recipients` | Array of recipients (max 100) |
 
 ---
 
@@ -264,7 +296,7 @@ POST /v1/automation/{script_sn}
 ### Check Balance
 
 ```
-GET /v1/account/balance
+GET /v1/balance
 ```
 
 Returns remaining email credits.

@@ -34,7 +34,7 @@
 | `40001` | Field validation error | Check all required fields. Verify field lengths (subject ≤150, preheader ≤60, fromName ≤50). |
 | `40003` | Invalid email | Validate `fromAddress` format. Check for typos. |
 | `40011` | Unverified sender | Go to dashboard → verify sender address first. |
-| `40012` | Insufficient balance | Call `GET /v1/account/balance`. Top up credits. |
+| `40012` | Insufficient balance | Call `GET /v1/balance`. Top up credits. |
 | `40013` | No sendable contacts | Check target list has active subscribers. Verify list SN is correct. |
 | `40019` | Invalid schedule time | Ensure `utcTimestamp` is in the future. Check timezone value. |
 
@@ -70,8 +70,8 @@
 ### "Campaign sent but no opens/clicks"
 
 ```
-1. GET /v1/campaign/{sn}              → confirm status is SENT
-2. POST /v1/report/performance        → check delivered vs bounced counts
+1. GET /v1/campaign/normal/{sn}       → confirm status is SENT
+2. POST /v1/report/campaigns/metrics  → check delivered vs bounced counts
 3. If high bounce rate:
    a. Check sender domain SPF/DKIM records
    b. Review contact list quality (remove invalid addresses)
@@ -127,7 +127,7 @@
 ### Authentication & Account
 - [ ] Requests without `x-api-key` return 403
 - [ ] Invalid API key returns `{"message": "Forbidden"}`
-- [ ] `GET /v1/account/balance` returns valid balance
+- [ ] `GET /v1/balance` returns valid balance
 
 ### Contacts
 - [ ] Create group returns valid SN

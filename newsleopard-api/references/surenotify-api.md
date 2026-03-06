@@ -13,11 +13,12 @@ Authentication: `x-api-key` header on all requests.
 3. [Email Event Query](#email-event-query)
 4. [SMS Sending](#sms-sending)
 5. [SMS Webhooks](#sms-webhooks)
-6. [SMS Event Query](#sms-event-query)
-7. [Sender Domain Authentication](#sender-domain-authentication)
-8. [Webhook Signature Verification](#webhook-signature-verification)
-9. [Variable System](#variable-system)
-10. [Error Messages](#error-messages)
+6. [SMS Exclusive Number](#query-exclusive-number)
+7. [SMS Event Query](#sms-event-query)
+8. [Sender Domain Authentication](#sender-domain-authentication)
+9. [Webhook Signature Verification](#webhook-signature-verification)
+10. [Variable System](#variable-system)
+11. [Error Messages](#error-messages)
 
 ---
 
@@ -220,6 +221,28 @@ GET /v1/sms/webhooks
 
 ```
 DELETE /v1/sms/webhooks
+```
+
+### Query Exclusive Number
+
+```
+GET /v1/sms/exclusive-number
+```
+
+Returns dedicated SMS phone numbers assigned to the account.
+
+**Response:**
+
+```json
+{
+  "phoneNumbers": [
+    {
+      "phoneNumber": "0912345678",
+      "createDate": "2024-01-15T08:00:00Z",
+      "updateDate": "2024-01-15T08:00:00Z"
+    }
+  ]
+}
 ```
 
 ---

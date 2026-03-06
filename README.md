@@ -1,5 +1,7 @@
 # NewsLeopard API — AI Agent Skill
 
+[English](README.en.md) | 繁體中文
+
 **讓 AI 程式助手生成 NewsLeopard 電子報與簡訊 API 的整合程式碼，涵蓋 EDM 行銷活動與 SureNotify 交易通知。**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

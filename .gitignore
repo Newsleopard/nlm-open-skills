@@ -12,6 +12,9 @@ Thumbs.db
 *.swo
 *~
 
+# Skill binary archives (use source directory instead)
+*.skill
+
 # Claude Code local settings
 .claude/
 CLAUDE.md

@@ -6,7 +6,7 @@ description: >
   write HTTP client code for contact management, campaign
   creation/scheduling/A-B testing, performance reports, templates,
   automation triggers, transactional email, SMS delivery, webhook
-  handling, and domain verification across 31 REST endpoints.
+  handling, and domain verification across 32 REST endpoints.
 tags:
   - email
   - sms
@@ -54,17 +54,18 @@ Missing/invalid key returns `{"message": "Forbidden"}`.
 | Submit campaign | POST | `/v1/campaign/normal/submit` |
 | Single-upload campaign | POST | `/v1/campaign/normal/once` |
 | A/B test campaign | POST | `/v1/campaign/testing/submit` |
-| Delete campaign | DELETE | `/v1/campaign/{campaign_sn}` |
-| Pause campaign | PATCH | `/v1/campaign/{campaign_sn}` |
-| Query campaign status | GET | `/v1/campaign/{campaign_sn}` |
+| Single-upload A/B test | POST | `/v1/campaign/testing/once` |
+| Delete campaign(s) | DELETE | `/v1/campaign/normal` (body: `campaignSnList`) |
+| Pause campaign | PATCH | `/v1/campaign/normal/{sn}` |
+| Query campaign status | GET | `/v1/campaign/normal/{sn}` |
 | Get campaign codes | GET | `/v1/report/campaigns?startDate=&endDate=` |
-| Campaign performance | POST | `/v1/report/performance` |
-| Export report | POST | `/v1/report/export` |
-| Get report URL | GET | `/v1/report/export/{export_sn}` |
+| Campaign performance | POST | `/v1/report/campaigns/metrics` |
+| Export report | POST | `/v1/report/{campaign_sn}/export` |
+| Get report URL | GET | `/v1/report/{campaign_sn}/link` |
 | List templates | GET | `/v1/templates` |
-| Get template | GET | `/v1/templates/{template_sn}` |
-| Trigger automation | POST | `/v1/automation/{script_sn}` |
-| Check balance | GET | `/v1/account/balance` |
+| Get template | GET | `/v1/templates/{id}` |
+| Trigger automation | POST | `/v1/automation/event` |
+| Check balance | GET | `/v1/balance` |
 
 **Variable syntax:** `${CUSTOM_FIELD_NAME}` in subject/content.
 
@@ -80,6 +81,7 @@ Missing/invalid key returns `{"message": "Forbidden"}`.
 | Send SMS | POST | `/v1/sms/messages` |
 | SMS webhook CRUD | POST/GET/DELETE | `/v1/sms/webhooks` |
 | Query SMS events | GET | `/v1/sms/events` |
+| Query exclusive number | GET | `/v1/sms/exclusive-number` |
 | Create domain auth | POST | `/v1/domains/{domain}` |
 | Verify domain DNS | PUT | `/v1/domains/{domain}` |
 | Remove domain | DELETE | `/v1/domains/{domain}` |
@@ -104,12 +106,12 @@ For full endpoint details, parameters, request/response schemas, and examples:
 ### 1. Campaign Creation Flow (EDM)
 
 ```
-1. GET  /v1/account/balance          → verify sufficient credits
+1. GET  /v1/balance                   → verify sufficient credits
 2. GET  /v1/contacts/lists           → get target list SNs
-3. GET  /v1/templates/{sn}          → fetch template HTML (optional)
+3. GET  /v1/templates/{id}          → fetch template HTML (optional)
 4. POST /v1/campaign/normal/submit   → create & schedule campaign
-5. GET  /v1/campaign/{sn}           → poll status until sent
-6. POST /v1/report/performance       → check delivery metrics
+5. GET  /v1/campaign/normal/{sn}    → poll status until sent
+6. POST /v1/report/campaigns/metrics → check delivery metrics
 ```
 
 ### 2. Transactional Email Flow (SureNotify)
