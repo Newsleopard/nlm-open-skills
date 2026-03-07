@@ -1,79 +1,98 @@
 [
   {
     "query": "幫我用 NewsLeopard EDM API 建立一個行銷活動，寄給 VIP 客戶群組，主旨是週年慶特惠",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "明確提及 NewsLeopard EDM API，要求建立行銷活動"
   },
   {
     "query": "I need to send a transactional order confirmation email using the SureNotify API in my Node.js backend",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "SureNotify API + Node.js backend — transactional email code"
   },
   {
     "query": "用 SureNotify API 發送簡訊驗證碼給用戶，號碼是台灣手機，要帶公司名稱",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "SureNotify API SMS sending — code generation"
   },
   {
     "query": "Help me set up a webhook endpoint to receive SureNotify email delivery events (open, click, bounce) in my Express server",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "SureNotify webhook + Express server — code integration"
   },
   {
     "query": "我要用 NewsLeopard API 匯入一份 CSV 聯絡人名單到指定群組，幫我寫 Python script",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "NewsLeopard API + Python script — CSV import code"
   },
   {
     "query": "How do I query campaign open rates and click rates using the NewsLeopard reporting API? I need to pull performance data for campaigns sent last month",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "NewsLeopard reporting API — querying performance data programmatically"
   },
   {
     "query": "幫我用 NewsLeopard A/B testing API 建立一個主旨測試活動，測試比例 30%，測試時間 24 小時",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "NewsLeopard A/B testing API — code generation"
   },
   {
     "query": "I need to verify the x-surenotify-signature header on incoming webhooks using HMAC-SHA256 in my Python Flask app",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "SureNotify webhook signature verification — Python Flask code"
   },
   {
     "query": "呼叫 NewsLeopard API 送活動時回傳錯誤碼 40012，怎麼排查？我的程式碼用 axios 打 /v1/campaign/normal/submit",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "NewsLeopard API error debugging with code (axios + specific endpoint)"
   },
   {
     "query": "Help me set up sender domain SPF/DKIM authentication using the SureNotify domains API for our company domain",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "SureNotify domains API — SPF/DKIM setup code"
   },
   {
     "query": "I want to integrate SendGrid to send marketing emails from our Rails application",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "SendGrid — different service, not NewsLeopard/SureNotify"
   },
   {
     "query": "幫我用 Mailchimp API 建立一個 email campaign 並排程寄送",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Mailchimp — different service"
   },
   {
     "query": "How do I send SMS messages using the Twilio API in Python?",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Twilio SMS — different service"
   },
   {
     "query": "我要設定 AWS SES 寄信，需要驗證網域和設定 DKIM",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "AWS SES — different service"
   },
   {
     "query": "Can you give me some email marketing best practices? How often should I send newsletters and what subject lines work best?",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Generic email marketing advice — no API or code intent"
   },
   {
     "query": "幫我串接 Stripe 付款功能，支援信用卡跟超商繳費",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Stripe payment — unrelated domain"
   },
   {
     "query": "I need to implement push notifications using Firebase Cloud Messaging in my React Native app",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Firebase Cloud Messaging — unrelated domain"
   },
   {
     "query": "幫我建一個 Node.js Express 專案，要有 TypeScript、ESLint、Jest 設定",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Generic Node.js project setup — no NewsLeopard/SureNotify"
   },
   {
     "query": "How do I set up Google Analytics 4 event tracking and pull reports via the GA4 API?",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Google Analytics 4 — unrelated domain"
   },
   {
     "query": "用電子豹 MCP Server 幫我寄一封電子報給 VIP 群組",
@@ -82,15 +101,18 @@
   },
   {
     "query": "Help me send emails from my backend service",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Generic email sending — no mention of NewsLeopard or SureNotify"
   },
   {
     "query": "我想了解 NewsLeopard EDM API 的 /v1/campaign/normal/submit 各欄位怎麼填",
-    "should_trigger": true
+    "should_trigger": true,
+    "_comment": "詢問特定 API endpoint 欄位用法 — API 知識查詢"
   },
   {
     "query": "How do I send bulk marketing emails programmatically?",
-    "should_trigger": false
+    "should_trigger": false,
+    "_comment": "Generic bulk email question — no mention of NewsLeopard or SureNotify"
   },
   {
     "query": "幫我查看最近活動的開信率",

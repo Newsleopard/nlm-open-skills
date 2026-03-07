@@ -1,24 +1,25 @@
 ---
 name: newsleopard-api
 description: >
-  Generate HTTP client code for the NewsLeopard EDM API
+  API reference and code generation for the NewsLeopard EDM API
   (api.newsleopard.com) and SureNotify transactional API
-  (mail.surenotifyapi.com). Use ONLY when the user explicitly
-  asks to write code, build integrations, or call REST endpoints
-  for these specific services. Covers contacts, campaigns, A/B
-  testing, reports, templates, automation, email, SMS, webhooks,
-  and domain verification. Do NOT trigger for generic email tasks,
-  MCP Server operations, or platform UI actions without code intent.
+  (mail.surenotifyapi.com). Use when the user asks to write code,
+  build integrations, call REST endpoints, or look up API endpoint
+  details and field specifications for these specific services.
+  Covers contacts, campaigns, A/B testing, reports, templates,
+  automation, email, SMS, webhooks, and domain verification.
+  Do NOT trigger for: (1) generic email/SMS tasks without
+  mentioning NewsLeopard or SureNotify, (2) operational requests
+  like sending emails, checking balances, or pausing campaigns
+  (even if they mention 電子豹/NewsLeopard — those are MCP Server
+  tasks, not API coding tasks), (3) MCP Server operations.
 tags:
-  - email
-  - sms
-  - edm
-  - taiwan
   - newsleopard
+  - surenotify
+  - edm
   - api
-  - marketing
+  - taiwan
   - webhook
-  - newsletter
   - transactional
 ---
 
@@ -53,9 +54,9 @@ Missing/invalid key returns `{"message": "Forbidden"}`.
 | Import contacts (text) | POST | `/v1/contacts/imports/{list_sn}/text` |
 | Check import status | GET | `/v1/contacts/imports/result/{import_sn}` |
 | Remove contacts | DELETE | `/v1/contacts/{list_sn}` |
-| Submit campaign | POST | `/v1/campaign/normal/submit` |
+| Submit campaign | POST | `/v1/campaign/normal/submit` (nested body: `form`, `content`, `config`) |
 | Single-upload campaign | POST | `/v1/campaign/normal/once` |
-| A/B test campaign | POST | `/v1/campaign/testing/submit` |
+| A/B test campaign | POST | `/v1/campaign/testing/submit` (nested body: `form`, `content`, `config`) |
 | Single-upload A/B test | POST | `/v1/campaign/testing/once` |
 | Delete campaign(s) | DELETE | `/v1/campaign/normal` (body: `campaignSnList`) |
 | Pause campaign | PATCH | `/v1/campaign/normal/{sn}` |

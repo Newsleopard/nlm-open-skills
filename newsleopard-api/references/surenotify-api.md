@@ -38,15 +38,18 @@ POST /v1/messages
 | `fromAddress` | string | Verified sender email |
 | `content` | string | HTML email body |
 | `recipients` | array | Recipient list (max 100 per request) |
+| `recipients[].name` | string | Recipient name |
 | `recipients[].address` | string | Recipient email |
 
 **Optional fields:**
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `fromName` | string | Sender display name |
-| `unsubscribedLink` | string | Unsubscribe URL |
+| `fromName` | string | Sender display name (defaults to local part of fromAddress) |
+| `unsubscribedLink` | string | Unsubscribe URL (displayed in email client header per MIME spec) |
 | `recipients[].variables` | object | Per-recipient variables (max 100 chars each) |
+
+**Important:** Per-recipient personalization variables (e.g., order_id, customer_name) MUST be placed inside a `recipients[].variables` object — do NOT put them as top-level fields in the recipient object. Only `name` and `address` are top-level required fields.
 
 **Request example:**
 
@@ -58,6 +61,7 @@ POST /v1/messages
   "content": "<h1>Hi {{name}}</h1><p>Order {{order_id}} confirmed.</p>",
   "recipients": [
     {
+      "name": "Alice",
       "address": "user@example.com",
       "variables": {
         "name": "Alice",
@@ -79,11 +83,14 @@ POST /v1/messages
       "address": "user@example.com"
     }
   ],
-  "failure": {}
+  "failure": {
+    "invalid-email": "Invalid: address is not a valid email format",
+    "long_var@example.com": "Invalid: the value of recipient variables should under 100 characters"
+  }
 }
 ```
 
-The `success[].id` is the message ID used for event tracking.
+The `success[].id` is the message ID used for event tracking. `failure` is an object with addresses as keys and error messages as values.
 
 ---
 
@@ -99,10 +106,12 @@ POST /v1/webhooks
 
 ```json
 {
-  "url": "https://your-server.com/webhook",
-  "events": [3, 4, 5, 6, 7]
+  "type": 3,
+  "url": "https://your-server.com/webhook"
 }
 ```
+
+Each event type requires a separate webhook registration. When a record with the same `type` exists, the URL is updated; otherwise a new record is created.
 
 **Event types:**
 
@@ -120,10 +129,27 @@ POST /v1/webhooks
 GET /v1/webhooks
 ```
 
+**Response fields per webhook:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `type` | number | Event type code |
+| `domain` | string | Domain name |
+| `url` | string | Webhook URL |
+| `createDate` | string | Created time |
+
 ### Delete Webhook
 
 ```
 DELETE /v1/webhooks
+```
+
+**Request body:**
+
+```json
+{
+  "type": 3
+}
 ```
 
 ---
@@ -134,7 +160,7 @@ DELETE /v1/webhooks
 GET /v1/events
 ```
 
-**Query parameters:**
+**Query parameters (choose one of `id` or `recipient`):**
 
 | Parameter | Description |
 |-----------|-------------|
@@ -143,6 +169,8 @@ GET /v1/events
 | `from` | Start date (UTC+0 format) |
 | `to` | End date (UTC+0 format) |
 | `status` | Filter: `accept`, `retry`, `delivery`, `open`, `click`, `bounce`, `complaint` |
+
+**Note:** `id` and `recipient` are mutually exclusive — use one or the other, not both.
 
 **Constraints:** 30-day history max, 50 results per query.
 
@@ -161,14 +189,15 @@ POST /v1/sms/messages
 | Field | Type | Description |
 |-------|------|-------------|
 | `content` | string | SMS text (must include company name per NCC regs) |
-| `recipients[].address` | string | Phone number (numeric only) |
+| `recipients` | array | Recipient list (max 100 per request) |
+| `recipients[].address` | string | Phone number (numeric only, e.g. `0912345678` or `912345678`) |
 | `recipients[].country_code` | string | Country code (e.g., `"886"` for Taiwan) |
 
 **Optional fields:**
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `from` | string | Sender phone (dedicated number only) |
+| `from` | string | Sender phone (dedicated/exclusive number only, omit if none) |
 | `alive_mins` | integer | Retry duration 5-480 min (default 5) |
 | `recipients[].variables` | object | Per-recipient variables |
 
@@ -190,7 +219,7 @@ POST /v1/sms/messages
 ```
 
 **Important:**
-- SMS content must include company/brand name in【】brackets (NCC regulation).
+- SMS content must include company/brand name in brackets (NCC regulation).
 - URLs in SMS require whitelist approval — email service@newsleopard.tw to request.
 - Phone numbers must be numeric only (no dashes, spaces, or `+` prefix).
 
@@ -203,6 +232,17 @@ POST /v1/sms/messages
 ```
 POST /v1/sms/webhooks
 ```
+
+**Request body:**
+
+```json
+{
+  "type": 3,
+  "url": "https://your-server.com/sms-webhook"
+}
+```
+
+Each event type requires a separate webhook registration.
 
 **SMS event types:**
 
@@ -217,10 +257,26 @@ POST /v1/sms/webhooks
 GET /v1/sms/webhooks
 ```
 
+**Response fields per webhook:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `type` | number | Event type code |
+| `url` | string | Webhook URL |
+| `createDate` | string | Created time |
+
 ### Delete SMS Webhook
 
 ```
 DELETE /v1/sms/webhooks
+```
+
+**Request body:**
+
+```json
+{
+  "type": 3
+}
 ```
 
 ### Query Exclusive Number
@@ -253,9 +309,20 @@ Returns dedicated SMS phone numbers assigned to the account.
 GET /v1/sms/events
 ```
 
-**Query parameters:** `id`, `recipient`, `country_code`, `from`, `to`, `status`
+**Query parameters (choose one of `id` or `recipient`+`country_code`):**
 
-**Status values:** `accept`, `delivery`, `bounce`
+| Parameter | Description |
+|-----------|-------------|
+| `id` | Message ID (from send response) |
+| `recipient` | Recipient phone number |
+| `country_code` | Country code (required with `recipient`) |
+| `from` | Start date (UTC+0 format) |
+| `to` | End date (UTC+0 format) |
+| `status` | Filter: `accept`, `delivery`, `bounce` |
+
+**Note:** `id` and `recipient`+`country_code` are mutually exclusive query methods.
+
+**Constraints:** 30-day history max, 50 results per query.
 
 ---
 
@@ -267,7 +334,25 @@ GET /v1/sms/events
 POST /v1/domains/{domain}
 ```
 
-Returns DNS records (TXT or CNAME) to configure for SPF/DKIM.
+**Response:** Returns an array of DNS records to configure:
+
+```json
+[
+  {
+    "name": "yours.domain.com",
+    "value": "v=spf1 include:amazonses.com include:mailgun.org ?all",
+    "record_type": 0,
+    "valid": false
+  }
+]
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | string | DNS record name |
+| `value` | string | DNS record value |
+| `record_type` | number | 0 = TXT, 1 = CNAME |
+| `valid` | boolean | Whether verification passed |
 
 ### Verify DNS Records
 
@@ -275,7 +360,7 @@ Returns DNS records (TXT or CNAME) to configure for SPF/DKIM.
 PUT /v1/domains/{domain}
 ```
 
-Call after DNS records are configured. Returns verification status.
+Call after DNS records are configured. Returns the same DNS records array with updated `valid` status.
 
 ### Remove Domain Authentication
 
@@ -283,11 +368,13 @@ Call after DNS records are configured. Returns verification status.
 DELETE /v1/domains/{domain}
 ```
 
+Returns `{ "success": true }` or `{ "success": false }`.
+
 **Setup flow:**
-1. `POST /v1/domains/example.com` → get DNS records
+1. `POST /v1/domains/example.com` — get DNS records
 2. Configure DNS records with your domain registrar
 3. Wait for DNS propagation (up to 48 hours)
-4. `PUT /v1/domains/example.com` → verify
+4. `PUT /v1/domains/example.com` — verify
 
 ---
 
@@ -324,7 +411,11 @@ Use `{{variable_name}}` in email subject, content, and SMS content.
 
 Variables are per-recipient and defined in the `recipients[].variables` object.
 
-**Constraints:** Each variable value max 100 characters.
+**Constraints:**
+- Each variable value max 100 characters
+- Variable names cannot contain special symbols (e.g., `{{#subject}}` is invalid)
+- Variable names cannot start with a digit
+- Variable names cannot be math expressions
 
 ---
 
@@ -336,5 +427,6 @@ Variables are per-recipient and defined in the `recipients[].variables` object.
 | `"Invalid: sender domain unverified"` | `fromAddress` domain not authenticated |
 | `"Invalid: the value of recipient variables should under 100 characters"` | Variable exceeds 100 char limit |
 | `"address is not a valid format"` | Invalid SMS phone number |
+| `"content can not be empty"` | SMS content is empty |
 | `"content length exceeds the limit"` | SMS content too long |
 | `{"message": "Forbidden"}` | Missing or invalid API key |

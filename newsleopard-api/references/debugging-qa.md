@@ -33,10 +33,19 @@
 |------------|---------|-----------------|
 | `40001` | Field validation error | Check all required fields. Verify field lengths (subject ≤150, preheader ≤60, fromName ≤50). |
 | `40003` | Invalid email | Validate `fromAddress` format. Check for typos. |
+| `40004` | Not allowed domain | Use a permitted sender domain. |
+| `40007` | Invalid SN | Verify campaign/group SN exists and is correct. |
+| `40008` | Unsupported file format | Use CSV or supported Excel format for import. |
+| `40009` | Empty file content | Ensure uploaded file has data rows. |
+| `40010` | File size exceeds limit | Reduce file size or split into batches. |
 | `40011` | Unverified sender | Go to dashboard → verify sender address first. |
 | `40012` | Insufficient balance | Call `GET /v1/balance`. Top up credits. |
 | `40013` | No sendable contacts | Check target list has active subscribers. Verify list SN is correct. |
-| `40019` | Invalid schedule time | Ensure `utcTimestamp` is in the future. Check timezone value. |
+| `40014` | Invalid campaign content | Review HTML content for errors. |
+| `40015` | Invalid send information | Check schedule/sender configuration. |
+| `40017` | Insufficient balance for testing | Need enough credits for both A/B test versions. |
+| `40019` | Invalid schedule time | Ensure `config.schedule.scheduleDate` is in the future (UTC+0). Check timezone value. |
+| `40020` | Invalid date format | Use ISO 8601 format: `YYYY-MM-DDTHH:mm:ss.SSZ` (UTC+0). |
 
 ### Contact Import Errors (EDM)
 
