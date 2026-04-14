@@ -18,7 +18,7 @@
 | Symptom | Cause | Fix |
 |---------|-------|-----|
 | `{"message": "Forbidden"}` | Missing/invalid `x-api-key` | Verify key is set and valid. Check for trailing whitespace. |
-| 403 on all requests | Key expired or revoked | Request new key from NewsLeopard support. |
+| 403 on all requests | Key expired or revoked | Request new key from Newsleopard support. |
 
 ### Rate Limiting
 
@@ -223,7 +223,7 @@
 
 ### Mock API Responses
 
-For CI/CD pipelines, mock the NewsLeopard APIs to avoid hitting production:
+For CI/CD pipelines, mock the Newsleopard APIs to avoid hitting production:
 
 ```python
 # Example: pytest fixture for mocking EDM API
@@ -307,7 +307,7 @@ def test_webhook_signature():
 
 ```python
 def health_check():
-    """Periodic health check for NewsLeopard integration."""
+    """Periodic health check for Newsleopard integration."""
     checks = {}
 
     # EDM API connectivity

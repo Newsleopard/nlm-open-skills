@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "prompt": "用 Python 寫一個函式，透過 NewsLeopard EDM API 建立並送出一封行銷活動信件。目標群組 SN 是 grp-001，主旨「六月新品上市」，寄件人名稱「品牌電子報」，寄件地址 news@example.com，HTML 內容帶個人化變數 NAME。要支援立即寄送和排程寄送兩種模式。",
+    "prompt": "用 Python 寫一個函式，透過 Newsleopard EDM API 建立並送出一封行銷活動信件。目標群組 SN 是 grp-001，主旨「六月新品上市」，寄件人名稱「品牌電子報」，寄件地址 news@example.com，HTML 內容帶個人化變數 NAME。要支援立即寄送和排程寄送兩種模式。",
     "expectations": [
       "Base URL is https://api.newsleopard.com",
       "Authentication uses x-api-key header (not Bearer token)",
@@ -53,7 +53,7 @@
   },
   {
     "id": 5,
-    "prompt": "Write a Python script that fetches campaign performance reports from the NewsLeopard EDM API for all campaigns sent in the last 30 days. For each campaign, print the open rate, click rate, and bounce rate. Use the reporting endpoints.",
+    "prompt": "Write a Python script that fetches campaign performance reports from the Newsleopard EDM API for all campaigns sent in the last 30 days. For each campaign, print the open rate, click rate, and bounce rate. Use the reporting endpoints.",
     "expectations": [
       "Base URL is https://api.newsleopard.com",
       "Authentication uses x-api-key header",
@@ -76,7 +76,7 @@
   },
   {
     "id": 7,
-    "prompt": "Write a TypeScript function that uses the NewsLeopard SureNotify API to send a password reset email with a reset_link variable, then polls the event status until delivery is confirmed or times out after 60 seconds.",
+    "prompt": "Write a TypeScript function that uses the Newsleopard SureNotify API to send a password reset email with a reset_link variable, then polls the event status until delivery is confirmed or times out after 60 seconds.",
     "expectations": [
       "Base URL is https://mail.surenotifyapi.com (SureNotify, not EDM)",
       "POST to /v1/messages for sending",

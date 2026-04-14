@@ -1,7 +1,7 @@
 ---
 name: newsleopard-api
 description: >
-  API reference and code generation for the NewsLeopard EDM API
+  API reference and code generation for the Newsleopard EDM API
   (api.newsleopard.com) and SureNotify transactional API
   (mail.surenotifyapi.com). Use when the user asks to write code,
   build integrations, call REST endpoints, or look up API endpoint
@@ -9,9 +9,9 @@ description: >
   Covers contacts, campaigns, A/B testing, reports, templates,
   automation, email, SMS, webhooks, and domain verification.
   Do NOT trigger for: (1) generic email/SMS tasks without
-  mentioning NewsLeopard or SureNotify, (2) operational requests
+  mentioning Newsleopard or SureNotify, (2) operational requests
   like sending emails, checking balances, or pausing campaigns
-  (even if they mention 電子豹/NewsLeopard — those are MCP Server
+  (even if they mention 電子豹/Newsleopard — those are MCP Server
   tasks, not API coding tasks), (3) MCP Server operations.
 tags:
   - newsleopard
@@ -23,7 +23,7 @@ tags:
   - transactional
 ---
 
-# NewsLeopard API Integration
+# Newsleopard API Integration
 
 Two API sets for email/SMS delivery:
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Eval runner for NewsLeopard API skill.
+Eval runner for Newsleopard API skill.
 
 Usage:
     python evals/run_evals.py              # run all evals
@@ -190,7 +190,7 @@ def run_functional_eval(client: anthropic.Anthropic, model: str) -> tuple[int, i
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Run evals for NewsLeopard API skill")
+    parser = argparse.ArgumentParser(description="Run evals for Newsleopard API skill")
     parser.add_argument("--trigger", action="store_true", help="Run trigger eval only")
     parser.add_argument("--functional", action="store_true", help="Run functional eval only")
     parser.add_argument("--all", action="store_true", help="Run all evals (default)")

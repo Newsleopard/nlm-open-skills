@@ -1,19 +1,19 @@
-# NewsLeopard API — AI Agent Skill
+# Newsleopard API — AI Agent Skill
 
 English | [繁體中文](README.md)
 
-**Enable AI coding assistants to generate integration code for NewsLeopard's newsletter and SMS APIs, covering EDM marketing campaigns and SureNotify transactional notifications.**
+**Enable AI coding assistants to generate integration code for Newsleopard's newsletter and SMS APIs, covering EDM marketing campaigns and SureNotify transactional notifications.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Skill Format](https://img.shields.io/badge/Format-Agent%20Skill-blue.svg)](https://agentskills.io)
 
 ---
 
-## About NewsLeopard
+## About Newsleopard
 
-[NewsLeopard](https://newsleopard.com) is the leading email marketing platform in Taiwan, trusted by over 15,000 businesses. The platform offers Email EDM marketing and SMS messaging services, featuring intelligent subscriber list management, automated behavioral analytics, and a high-performance cloud delivery infrastructure — capable of sending 10,000 emails per minute with a 99% delivery rate.
+[Newsleopard](https://newsleopard.com) is the leading email marketing platform in Taiwan, trusted by over 15,000 businesses. The platform offers Email EDM marketing and SMS messaging services, featuring intelligent subscriber list management, automated behavioral analytics, and a high-performance cloud delivery infrastructure — capable of sending 10,000 emails per minute with a 99% delivery rate.
 
-NewsLeopard also provides **SureNotify**, a transactional notification service designed for real-time scenarios such as order confirmations, password resets, and verification codes, ensuring critical messages are delivered on time.
+Newsleopard also provides **SureNotify**, a transactional notification service designed for real-time scenarios such as order confirmations, password resets, and verification codes, ensuring critical messages are delivered on time.
 
 ---
 
@@ -223,7 +223,7 @@ newsleopard-api/
 
 ## Using with MCP Server
 
-In addition to the Agent Skill, NewsLeopard also provides an **MCP Server** that allows AI assistants to directly operate platform features without writing code.
+In addition to the Agent Skill, Newsleopard also provides an **MCP Server** that allows AI assistants to directly operate platform features without writing code.
 
 ### Skill vs MCP Server
 
@@ -232,42 +232,27 @@ In addition to the Agent Skill, NewsLeopard also provides an **MCP Server** that
 | **Purpose** | API knowledge base for AI coding assistants | Let AI directly operate platform features |
 | **Use Case** | Developers writing code, with AI referencing API specs to generate integration code | Marketers or anyone managing newsletters through AI conversation |
 | **Code Required?** | Yes, AI helps you write API integration code | No, AI executes operations directly |
-| **Supported Tools** | Claude Code, Copilot, Cursor, Windsurf, Codex, OpenClaw | Claude.ai, Claude Desktop, ChatGPT, Cursor |
+| **Supported Tools** | Claude Code, Copilot, Cursor, Windsurf, Codex, OpenClaw | Claude Desktop, ChatGPT, Cursor, Lovable, GitHub Copilot, OpenAI Codex |
 
 ### MCP Server Configuration
 
-The NewsLeopard MCP Server supports two transport protocols:
+For the full installation and setup walkthrough, see the official guide: [Newsleopard AI Agent Setup](https://newsleopard.com/ai-lab/ai-agent/).
 
-- **SSE** (Recommended, best compatibility): `https://mcp.newsleopard.com/sse`
-- **Streamable HTTP**: `https://mcp.newsleopard.com/mcp`
+**Connection details:**
 
-Authentication uses **OAuth 2.1**, with a guided login flow on first connection.
+- MCP endpoint: `https://mcp.newsleopard.com/mcp`
+- Authentication: **OAuth 2.1** (guided login and authorization on first connection)
 
-**Claude Desktop configuration example:**
+**Supported AI clients:** Claude (Desktop, requires Claude Pro/Team/Enterprise), ChatGPT, Cursor, Lovable, GitHub Copilot, OpenAI Codex.
 
-```json
-{
-  "mcpServers": {
-    "newsleopard": {
-      "url": "https://mcp.newsleopard.com/sse"
-    }
-  }
-}
-```
+**Quick setup (Claude Desktop example):**
 
-**Cursor configuration example:**
+1. Open Settings → Connectors → click "Add custom connector"
+2. Name it `Newsleopard`, URL: `https://mcp.newsleopard.com/mcp`
+3. Click "Connect", sign in with your Newsleopard account, and authorize
+4. Start with natural language commands such as "Analyze this month's open rates"
 
-```json
-{
-  "mcpServers": {
-    "newsleopard": {
-      "url": "https://mcp.newsleopard.com/sse"
-    }
-  }
-}
-```
-
-The MCP Server provides 27 tools covering campaign management, report analysis, list management, template operations, automation control, and more.
+The MCP Server provides a full tool set covering campaign management, report analysis, list management, template operations, automation control, and more.
 
 ---
 
@@ -277,7 +262,7 @@ After installing the Skill, you can give natural language instructions to your A
 
 **EDM Marketing Campaigns:**
 
-- "Create a marketing campaign using the NewsLeopard API to send a promotional email to the VIP group"
+- "Create a marketing campaign using the Newsleopard API to send a promotional email to the VIP group"
 - "Query the open rates and click rates for all campaigns from last week"
 - "Import this CSV of contacts into the specified group"
 - "Create an A/B test campaign to test two different subject lines"
@@ -320,9 +305,9 @@ This Skill includes comprehensive debugging guides and QA checklists (see [`refe
 
 ## Related Links
 
-- [NewsLeopard EDM API Documentation](https://newsleopard.com/api/v1/)
+- [Newsleopard EDM API Documentation](https://newsleopard.com/api/v1/)
 - [SureNotify API Documentation](https://newsleopard.com/surenotify/api/v1/)
-- [NewsLeopard MCP Server](https://mcp.newsleopard.com) — Let AI directly operate the NewsLeopard platform
+- [Newsleopard MCP Server Setup Guide](https://newsleopard.com/ai-lab/ai-agent/) — MCP Server connection and authorization walkthrough
 - [Agent Skills Open Standard](https://agentskills.io)
 - [Claude Code Skills Documentation](https://docs.anthropic.com/en/docs/claude-code/skills)
 - [GitHub Copilot Skills Documentation](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat)
@@ -339,4 +324,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Made with ❤️ by the NewsLeopard Team
+Made with ❤️ by the Newsleopard Team
